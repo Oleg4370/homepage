@@ -1,3 +1,75 @@
+$base-color: #3366ff;
 main {
   padding: 20px 0;
+}
+
+.ui{
+  &.information {
+    &-education{
+      margin: 100px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .card{
+        max-width: none;
+        position: absolute;
+        visibility: hidden;
+        top: -85px;
+        &.fadeInLeftBig{
+          right: calc(100% + 20px);
+        }
+        &.fadeInRightBig{
+          left: calc(100% + 20px);
+        }
+        &.animation-done{
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+.card-wrap{
+  display: inline-block;
+  text-align: center;
+  height: 150px;
+  position: relative;
+  opacity: 0;
+  &:last-child{
+    &:after{
+      display: none;
+    }
+  }
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 33px;
+    left: 50%;
+    border-left: 2px solid $base-color;
+    height: 100%;
+    max-height: 0;
+    transition: all .5s .5s;
+  }
+  &.ready{
+    opacity: 1;
+    &:after{
+      max-height: 120px;
+    }
+    svg.circle{
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+svg.circle {
+  width: 34px;
+  height: 34px;
+  stroke: $base-color;
+  stroke-width: 2px;
+  fill:transparent;
+  stroke-dasharray: 94px;
+  stroke-dashoffset: 94px;
+  transition: all .5s;
 }
